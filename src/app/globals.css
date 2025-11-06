@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    --foreground: 220 70% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 70% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 70% 10%;
+    --primary: 220 70% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 70% 30%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 70% 40%;
+    --accent: 250 80% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 30% 90%;
+    --input: 220 30% 90%;
+    --ring: 250 80% 50%;
+    --radius: 0.75rem;
+    --chart-1: 250 80% 60%;
+    --chart-2: 190 80% 50%;
+    --chart-3: 160 80% 40%;
+    --chart-4: 130 80% 45%;
+    --chart-5: 280 80% 55%;
+  }
+
+  .dark {
+    --background: 220 50% 5%;
+    --foreground: 210 40% 98%;
+    --card: 220 50% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 50% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 220 50% 5%;
+    --secondary: 220 50% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 50% 12%;
+    --muted-foreground: 210 40% 70%;
+    --accent: 250 80% 60%;
+    --accent-foreground: 220 50% 5%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 50% 18%;
+    --input: 220 50% 18%;
+    --ring: 250 80% 60%;
+    --chart-1: 250 80% 60%;
+    --chart-2: 190 80% 50%;
+    --chart-3: 160 80% 40%;
+    --chart-4: 130 80% 45%;
+    --chart-5: 280 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10;
+  }
+  
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .responsive-padding {
+    @apply py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-300;
+  }
+  
+  .glass-effect-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-lg transition-all duration-300;
+  }
+  
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent via-primary/90 to-accent transition-all duration-500;
+  }
+  
+  .gradient-text-subtle {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary/90 to-accent/80 transition-all duration-500;
+  }
+  
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-lg before:bg-gradient-to-r before:from-accent before:via-primary/80 before:to-accent before:-z-10 before:transition-all before:duration-500;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(var(--accent)/0.5)];
+  }
+  
+  .hover-glow-intense {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(var(--accent)/0.7)];
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-color-shift {
+    animation: color-shift 8s ease-in-out infinite;
+  }
+  
+  .animate-soft-shadow {
+    animation: soft-shadow 4s ease-in-out infinite;
+  }
+  
+  .transition-colors-slow {
+    @apply transition-colors duration-500;
+  }
+  
+  .transition-transform-slow {
+    @apply transition-transform duration-500;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 5px 15px rgba(var(--accent), 0.2));
+  }
+  50% {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 15px 20px rgba(var(--accent), 0.4));
+  }
+  100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 5px 15px rgba(var(--accent), 0.2));
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.7;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes color-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(15deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes soft-shadow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(var(--primary), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(var(--accent), 0.5);
+  }
+}
